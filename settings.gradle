@@ -1,1 +1,1 @@
-include ':app', ':inetsend', ':inetreceive'
+include ':app', ':inetsend', ':inetreceive', ':utilslibrary'
