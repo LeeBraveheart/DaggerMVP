@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.lee.daggermvptest"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions("default")
+    productFlavors {
+        normal {
+            dimension "default"
+            resValue "string", "app_name", "MVP_Dagger"
+            resValue "string", "app_scheme", "bv4phone"
+            resValue "string", "app_link_scheme", "normal"
+            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+        }
+        meng {
+            dimension "default"
+            applicationIdSuffix ".meng"
+            resValue "string", "app_name", "MVP_Dagger_meng"
+            resValue "string", "app_scheme", "bv4phonemeng"
+            resValue "string", "app_link_scheme", "meng"
+            manifestPlaceholders = [app_icon: "@mipmap/meng_launcher"]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.google.dagger:dagger:2.12'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.12'
+
+    compile 'com.blankj:utilcode:1.13.6'
+}
